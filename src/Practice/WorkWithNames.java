@@ -24,19 +24,19 @@ public class WorkWithNames {
     public static void main(String[] args) {
 
         //Дано
-        String[] names = {"alice", "BOB", "  Charlie  ", "david123", "Eva", "FRANK", "", "grace"};
+        String[] names = {"alice", "BOB", "  Charlie  ", "david123", "Eva", "FRANK", "", "grace", " "};
 
         //счетчик валидных имен
         int validNames = 0;
 
         for (String name : names) {
 
+            name = name.trim(); //убираем лишние пробелы
+
             if (name.isEmpty()) {
                 System.out.println("(пустое имя пропущено)"); //пропускаем пустые имена
 
             } else {
-
-                name = name.trim(); //убираем лишние пробелы
 
                 //выводим все имена с заглавной буквы
                 String rightName = name.substring(0,1).toUpperCase() + name.substring(1).toLowerCase();
