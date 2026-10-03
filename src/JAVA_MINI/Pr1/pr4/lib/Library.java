@@ -4,9 +4,9 @@ import JAVA_MINI.Pr1.pr4.book.Book;
 
 public class Library {
 
-    private String name;     // название библиотеки
-    private Book[] books;    // массив книг
-    private int bookCount;   // сколько книг сейчас добавлено
+    private String name;
+    private Book[] books;
+    private int bookCount;
 
     public Library(String name, int maxCountBooks) {
         books = new Book[maxCountBooks];
@@ -20,15 +20,17 @@ public class Library {
         } else {
             System.out.println("ОШИБКА: Нельзя добавлять, максимальная вместимость достигнута!");
         }
-
     }
 
     public void findByAuthor(String author) {
-        for (int i = 0; i < bookCount; i++) {
-            if (books[i].getAuthor().equals(author)) {
-                System.out.println(books[i].getInfo());
+        if (author != null && !author.isEmpty()) {
+            for (int i = 0; i < bookCount; i++) {
+                if (author.equals(books[i].getAuthor())) {
+                    System.out.println(books[i].getInfo());
+                }
             }
         }
+
     }
 
 
@@ -54,11 +56,13 @@ public class Library {
     }
 
     public Book getBestBook() {
-        Book bestBook = null;
-        int bestRating = 0;
-        for (int i = 0; i < bookCount; i++) {
-            if (books[i].getRating() > bestRating) {
-                bestRating = books[i].getRating();
+        if (bookCount == 0) {
+            return null;
+        }
+
+        Book bestBook = books[0];          // предположили, что лучшая — первая
+        for (int i = 1; i < bookCount; i++) {   // начинаем с 1, не с 0
+            if (books[i].getRating() > bestBook.getRating()) {
                 bestBook = books[i];
             }
         }
