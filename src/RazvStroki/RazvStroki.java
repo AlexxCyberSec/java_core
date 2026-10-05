@@ -4,6 +4,11 @@ public class RazvStroki {
     public static void main(String[] args) {
 
         String s = "J@va the be$t!123";
+
+        System.out.println(reverse(s));
+    }
+
+    public static String reverse(String s) {
         char[] chars = s.toCharArray();
 
         int left = 0;
@@ -15,13 +20,14 @@ public class RazvStroki {
             } else if (!Character.isLetter(chars[right])) {
                 right--;
             } else {
-                char tmp = chars[left];     // меняем местами края
+                char tmp = chars[left];
                 chars[left] = chars[right];
                 chars[right] = tmp;
-                left++;                     // сдвигаем указатели навстречу
+                left++;
                 right--;
             }
         }
-        System.out.println(new String(chars));
+        String reversedString = new String(chars);
+        return reversedString;
     }
 }
